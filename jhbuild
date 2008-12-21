@@ -1,0 +1,11 @@
+#!/bin/sh
+
+run ()
+{
+	echo $@
+	$@
+}
+
+run jhbuild --file=$HOME/Source/ps3jhbuild/jhbuildrc \
+            --moduleset=file://$HOME/Source/ps3jhbuild/ps3toolchain.modules $@
+

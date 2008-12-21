@@ -1,0 +1,12 @@
+prefix = "/opt/ps3"
+
+modules = [ "meta-ps3-toolchain" ]
+
+os.environ['PS3DEV'] = prefix
+os.environ['ABI'] = '32'
+#build_policy = 'updated'
+
+buildroot = 'build'
+
+checkoutroot = os.path.expanduser('~/Source/ps3jhbuild/build')
+

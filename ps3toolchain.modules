@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<moduleset>
+	<metamodule id="meta-ps3-toolchain">
+		<dependencies>
+			<dep package="libgmp" />
+			<dep package="mpfr" />
+
+			<!--
+			<dep package="binutils-ppu" />
+			<dep package="vanilla-gcc-ppu" />
+
+			<dep package="binutils-spu" />
+			<dep package="vanilla-gcc-spu" />
+			-->
+		</dependencies>
+	</metamodule>
+
+	<tarball id="binutils-ppu" autogenargs="--prefix=&quot;$PS3DEV/ppu&quot; --target='ppu' --disable-nls">
+		<source href="http://ftp.gnu.org/pub/gnu/binutils/binutils-2.17.tar.bz2" />
+		<patches>
+			<patch file="/Users/herzi/Source/ps3toolchain/patches/binutils-2.17-PPU.patch" strip="1" />
+		</patches>
+	</tarball>
+
+	<tarball id="vanilla-gcc-ppu" autogenargs='--prefix=$PS3DEV/ppu --target=ppu --enable-languages=c --with-newlib --disable-libgomp --disable-libmudflap --disable-libssp --disable-nls --disable-shared --disable-threads --without-headers'>
+		<source href="http://ftp.gnu.org/pub/gnu/gcc/gcc-4.2.0/gcc-4.2.0.tar.bz2" />
+		<patches>
+			<patch file="/Users/herzi/Source/ps3toolchain/patches/gcc-4.2.0-PPU.patch" strip="1" />
+		</patches>
+	</tarball>
+
+	<tarball id="binutils-spu" autogenargs="--prefix=&quot;$PS3DEV/spu&quot; --target='spu' --disable-nls">
+		<source href="http://mirror.facebook.com/sourceware/binutils/snapshots/binutils-2.17.50.tar.bz2" />
+	</tarball>
+
+	<tarball id="libgmp" autogenargs='--enable-maintainer-mode'>
+		<source href="http://ftp.sunet.se/pub/gnu/gmp/gmp-4.2.4.tar.bz2" />
+	</tarball>
+
+	<tarball id="mpfr">
+		<source href="http://www.mpfr.org/mpfr-current/mpfr-2.3.2.tar.bz2" />
+	</tarball>
+
+	<tarball id="vanilla-gcc-spu" autogenargs='--prefix="$PS3DEV/spu" --target="spu" --enable-languages="c" --with-newlib --disable-nls'>
+		<!--
+		<source href="http://gcc-uk.internet.bs/snapshots/4.3-20070608/gcc-4.3-20070608.tar.bz2" />
+		<patches>
+			<patch file="/Users/herzi/Source/ps3jhbuild/gcc-compile.patch" strip="1" />
+			<patch file="/Users/herzi/Source/ps3jhbuild/gcc-4.3-20070608-multilib.patch" strip="0" />
+		</patches>-->
+		<source href="http://ftp.gnu.org/gnu/gcc/gcc-4.3.2/gcc-4.3.2.tar.bz2" />
+		<dependencies>
+			<dep package="libgmp" />
+			<dep package="mpfr" />
+		</dependencies>
+	</tarball>
+
+</moduleset>
